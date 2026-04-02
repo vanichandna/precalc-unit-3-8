@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP Precalculus Unit 3.8: The Tangent Function</title>
+<style>
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #f4f7f6; color: #333; }
+  .container { max-width: 700px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+  h1 { text-align: center; color: #2c3e50; }
+  .question { margin-bottom: 25px; }
+  .question p { font-weight: bold; font-size: 16px; }
+  label { display: block; margin: 8px 0; cursor: pointer; }
+  button { display: block; width: 100%; padding: 12px; font-size: 18px; color: white; background-color: #3498db; border: none; border-radius: 5px; cursor: pointer; margin-top: 20px;}
+  button:hover { background-color: #2980b9; }
+  #result { margin-top: 25px; font-weight: bold; font-size: 20px; text-align: center; padding: 15px; border-radius: 5px; }
+  .correct { background-color: #d4edda; color: #155724; }
+  .incorrect { background-color: #f8d7da; color: #721c24; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Unit 3.8: The Tangent Function</h1>
+  <form id="quizForm">
+    
+    <div class="question">
+      <p>1. What is the period of the parent tangent function, f(x) = tan(x)?</p>
+      <label><input type="radio" name="q1" value="A"> A) π</label>
+      <label><input type="radio" name="q1" value="B"> B) 2π</label>
+      <label><input type="radio" name="q1" value="C"> C) π/2</label>
+      <label><input type="radio" name="q1" value="D"> D) 4π</label>
+    </div>
+
+    <div class="question">
+      <p>2. Where do the vertical asymptotes of f(x) = tan(x) occur (where k is any integer)?</p>
+      <label><input type="radio" name="q2" value="A"> A) x = π/4 + (π/2)k</label>
+      <label><input type="radio" name="q2" value="B"> B) x = πk</label>
+      <label><input type="radio" name="q2" value="C"> C) x = π/2 + πk</label>
+      <label><input type="radio" name="q2" value="D"> D) x = 2πk</label>
+    </div>
+
+    <div class="question">
+      <p>3. In which quadrants is the tangent function positive?</p>
+      <label><input type="radio" name="q3" value="A"> A) Quadrants I and II</label>
+      <label><input type="radio" name="q3" value="B"> B) Quadrants I and III</label>
+      <label><input type="radio" name="q3" value="C"> C) Quadrants II and IV</label>
+      <label><input type="radio" name="q3" value="D"> D) Quadrants III and IV</label>
+    </div>
+
+    <div class="question">
+      <p>4. Which of the following limits accurately describes the end behavior near the asymptote x = π/2?</p>
+      <label><input type="radio" name="q4" value="A"> A) As x → (π/2)⁻, tan(x) → -∞</label>
+      <label><input type="radio" name="q4" value="B"> B) As x → (π/2)⁻, tan(x) → ∞</label>
+      <label><input type="radio" name="q4" value="C"> C) As x → (π/2)⁺, tan(x) → ∞</label>
+      <label><input type="radio" name="q4" value="D"> D) As x → (π/2)⁺, tan(x) → 0</label>
+    </div>
+
+    <div class="question">
+      <p>5. What is the domain of the function g(x) = tan(2x)?</p>
+      <label><input type="radio" name="q5" value="A"> A) All real numbers except x = π/4 + (π/2)k</label>
+      <label><input type="radio" name="q5" value="B"> B) All real numbers except x = π/2 + πk</label>
+      <label><input type="radio" name="q5" value="C"> C) All real numbers except x = π/4 + πk</label>
+      <label><input type="radio" name="q5" value="D"> D) All real numbers except x = πk</label>
+    </div>
+
+    <button type="button" onclick="calculateScore()">Submit Quiz</button>
+  </form>
+
+  <div id="result"></div>
+</div>
+
+<script>
+function calculateScore() {
+  let score = 0;
+  const totalQuestions = 5;
+  const form = document.forms['quizForm'];
+  const answers = { q1: 'A', q2: 'C', q3: 'B', q4: 'B', q5: 'A' };
+  
+  // Check that all questions have been answered
+  for (let q in answers) {
+    if (!form[q].value) {
+      alert("Please answer all questions before submitting.");
+      return;
+    }
+  }
+
+  // Calculate score
+  for (let q in answers) {
+    if (form[q].value === answers[q]) {
+      score++;
+    }
+  }
+  
+  // Display result
+  const resultDiv = document.getElementById('result');
+  resultDiv.innerText = `You scored ${score} out of ${totalQuestions}!`;
+  
+  if (score === totalQuestions) {
+    resultDiv.className = 'correct';
+  } else {
+    resultDiv.className = 'incorrect';
+    resultDiv.innerText += " Review the properties of the tangent function and try again.";
+  }
+}
+</script>
+
+</body>
+</html>
